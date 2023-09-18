@@ -12,14 +12,6 @@ vim.keymap.set(
   { expr = true, silent = true }
 )
 
--- Exit inser mode with jk
-vim.keymap.set(
-  "i",
-  "jk",
-  "<ESC>",
-  { noremap = true, silent = true, desc = "Exit insert mode" }
-)
-
 -- Move selected code up/down with Alt + K/J
 vim.keymap.set(
   "v",
@@ -114,12 +106,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Replace selected code without saving it in to buffer
-vim.keymap.set(
-  "x",
-  "<leader>p",
-  '"_dP',
-  { desc = "Paste without saving deleted" }
-)
+vim.keymap.set("v", "p", '"_dP', { desc = "Paste without saving deleted" })
 
 -- Copy to clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
@@ -164,3 +151,15 @@ vim.keymap.set(
 
 -- Open list of files in buffer and open one by chosen number
 vim.keymap.set("n", "<leader>b", ":ls<CR>:b<space>")
+
+-- Better escape using jk in insert and terminal mode
+vim.keymap.set("i", "jk", "<ESC>")
+vim.keymap.set("t", "jk", "<C-\\><C-n>")
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
+
+-- Better indent
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")

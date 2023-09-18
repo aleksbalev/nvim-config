@@ -39,10 +39,6 @@ function M.format(opts)
     return
   end
 
-  if M.opts.format_notify then
-    M.notify(formatters)
-  end
-
   vim.lsp.buf.format(vim.tbl_deep_extend("force", {
     bufnr = buf,
     filter = function(client)
